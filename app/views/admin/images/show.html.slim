@@ -1,0 +1,6 @@
+h1 = @image.title
+h2 = @image.description
+
+= image_tag @image.image.to_s
+
+= link_to 'Index', admin_images_path

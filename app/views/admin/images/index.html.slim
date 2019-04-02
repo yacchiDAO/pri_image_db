@@ -1,0 +1,17 @@
+h1 Image
+
+table
+  tr
+    th title
+    th description
+    th image
+    th
+  - @images.each do |image|
+    tr
+      td = link_to image.title, admin_image_path(image)
+      td = image.description
+      td = image_tag image.image.to_s
+      td
+        = link_to 'Edit', edit_admin_image_path(image)
+        = link_to 'Delete', admin_image_path(image), method: 'delete'
+= link_to 'New', new_admin_image_path
