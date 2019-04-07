@@ -40,6 +40,9 @@ gem 'config'
 gem 'slim-rails'
 gem 'ransack'
 gem 'kaminari'
+gem 'cocoon'
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

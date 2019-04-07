@@ -12,7 +12,6 @@ class Admin::ImagesController < Admin::ApplicationController
   end
   
   def create
-    @image = Image.new(image_params)
     if @image.save()
       flash[:notice] = '新規作成しました'
       redirect_to edit_admin_image_path(@image)
@@ -29,8 +28,7 @@ class Admin::ImagesController < Admin::ApplicationController
   end
 
   def update
-    @image = Image.new(image_params)
-    if @image.save
+    if @image.update!(image_params)
       flash[:notice] = '新規作成しました'
       redirect_to edit_admin_image_path(@image)
     else
@@ -56,6 +54,6 @@ class Admin::ImagesController < Admin::ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:title, :description, :image, :image_cache, :remove_image)
+    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, image_info_attributes: [:line, :description])
   end
 end

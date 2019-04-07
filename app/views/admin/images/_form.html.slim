@@ -1,8 +1,15 @@
-= f.label :title
-= f.text_field :title
+- if f.object.persisted? && f.object.image?
+  = image_tag f.object.image.to_s
+- else
+  - f.hidden_field :image_cache
+  - f.file_field :image
+br
+= f.label '作品タイトル'
+= f.collection_select :animation_id, Animation.all, :id, :name
 
-= f.label :description
-= f.text_field :description
+= f.fields_for :image_info, f.object.image_info || ImageInfo.new do |ff|
+  = ff.label 'セリフ'
+  = ff.text_field :line
 
-= f.label :image
-= f.file_field :image
+  = ff.label '説明'
+  = ff.text_field :description

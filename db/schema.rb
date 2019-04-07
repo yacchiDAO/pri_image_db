@@ -20,12 +20,47 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "password_digest", null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "title", null: false
+  create_table "animations", force: :cascade do |t|
+    t.string "name", null: false
     t.string "description"
+  end
+
+  create_table "character_animations", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "animation_id", null: false
+  end
+
+  create_table "character_images", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "image_id", null: false
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+  end
+
+  create_table "image_info_tags", force: :cascade do |t|
+    t.integer "image_info_id", null: false
+    t.integer "tag_id", null: false
+  end
+
+  create_table "image_infos", force: :cascade do |t|
+    t.string "image_id", null: false
+    t.string "line", null: false
+    t.string "description"
+  end
+
+  create_table "images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.integer "animation_id", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "login_id", null: false
+    t.string "password_digest", null: false
   end
 
 end

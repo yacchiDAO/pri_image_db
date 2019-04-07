@@ -2,14 +2,12 @@ h1 Image
 
 table
   tr
-    th title
-    th description
     th image
+    th description
     th
   - @images.each do |image|
     tr
-      td = link_to image.title, admin_image_path(image)
-      td = image.description
+      td = image.image_info.description
       td = image_tag image.image.to_s
       td
         = link_to 'Edit', edit_admin_image_path(image)

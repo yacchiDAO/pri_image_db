@@ -1,0 +1,13 @@
+h1 Characters
+
+table
+  tr
+    th name
+    th
+  - @characters.each do |character|
+    tr
+      td = character.name
+      td
+        = link_to 'Edit', edit_admin_character_path(character)
+        = link_to 'Delete', admin_character_path(character), method: 'delete'
+= link_to 'New', new_admin_character_path
