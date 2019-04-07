@@ -12,8 +12,14 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require cocoon
-//= require_tree .
 // Loads all Semantic javascripts
+//= require jquery
+//= require jquery_ujs
 //= require semantic-ui
+//= require_tree .
+
+$(function() {
+  $('.ui.dropdown').dropdown();
+  $('.ui.checkbox').checkbox();
+});

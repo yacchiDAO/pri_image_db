@@ -1,13 +1,13 @@
-h1 Animations
+h1 作品
 
-table
-  tr
-    th name
-    th
-  - @animations.each do |animation|
-    tr
-      td = animation.name
-      td
-        = link_to 'Edit', edit_admin_animation_path(animation)
-        = link_to 'Delete', admin_animation_path(animation), method: 'delete'
-= link_to 'New', new_admin_animation_path
+= link_to '登録する', new_admin_animation_path, class: 'ui pink button'
+
+.ui.segment
+  .ui.cards
+    - @animations.each do |animation|
+      = link_to edit_admin_animation_path(animation), class: 'ui link card' do
+        .content
+          .header
+            = animation.name
+          .description
+            = animation.description

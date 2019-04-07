@@ -1,7 +1,7 @@
-h1 New Image
+h1
+  | 新規作成
+= link_to '一覧へ', admin_images_path, class: 'ui green button'
 
 = form_for([:admin, @image], html: { class: 'ui form' })  do |f|
   = render 'form', f: f
-  = f.submit
-
-= link_to 'Back', admin_images_path
+  = f.submit '作成', class: 'ui blue button'

@@ -1,7 +1,17 @@
-h1 Edit Image
+h1
+  | ID:#
+  = @image.id
+= link_to '一覧へ', admin_images_path, class: 'ui green button'
 
 = form_for([:admin, @image], html: { class: 'ui form' })  do |f|
   = render 'form', f: f
-  = f.submit
-
-= link_to 'Back', admin_images_path
+  - f.object.animation.characters.each do |character|
+    .ui.card
+      .content
+        .header
+          .inline.field
+            .ui.checkbox
+              = f.label character.name
+              = f.check_box :character_ids, { multiple: true, include_hidden: false, class: "ui dropdown" }, character[:id]
+  = f.submit '更新', class: 'ui blue button'
+  = link_to '削除', admin_image_path(@image), method: 'delete', class: 'ui red button'

@@ -1,7 +1,7 @@
-h1 New Animation
+h1 作品 - 新規登録
+= link_to '作品一覧へ', admin_animations_path, class: 'ui green button'
 
-= form_for([:admin, @animation], html: { class: 'ui form' })  do |f|
-  = render 'form', f: f
-  = f.submit
-
-= link_to 'Back', admin_animations_path
+.ui.segment
+  = form_for([:admin, @animation], html: { class: 'ui form' })  do |f|
+    = render 'form', f: f
+    = f.submit '登録', class: 'ui blue button'

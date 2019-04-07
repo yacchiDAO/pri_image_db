@@ -1,12 +1,30 @@
 doctype html
 html
   head
-    title PriImageTalk
+    title
+      | PriImageTalk
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
 
   body
-    = yield
+    .ui.top.stackable.labeled.inverted.pink.visible.sidebar.menu
+      = link_to admin_images_path, class: 'item ui link inverted' do
+        | 画像
+      = link_to admin_animations_path, class: 'item ui link inverted' do
+        | 作品
+      = link_to admin_characters_path, class: 'item ui link inverted' do
+        | 人物
+      = link_to nil, class: 'item ui link inverted' do
+        | タグ(準備中)
+
+    .pusher
+      .content
+        .ui.padding.stackable.container
+          - if flash.present?
+            .ui.positive.message
+              - flash.each do |key, value|
+                = content_tag(:div, value, class: "#{key}")
+          == yield

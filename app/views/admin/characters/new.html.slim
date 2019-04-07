@@ -1,7 +1,8 @@
-h1 New Character
+h1 キャラ - 新規作成
 
-= form_for([:admin, @character], html: { class: 'ui form' })  do |f|
-  = render 'form', f: f
-  = f.submit
+= link_to 'キャラ一覧へ', admin_characters_path, class: 'ui green button'
 
-= link_to 'Back', admin_characters_path
+.ui.segment
+  = form_for([:admin, @character], html: { class: 'ui form' })  do |f|
+    = render 'form', f: f
+    = f.submit '新規作成', class: 'ui blue button'

@@ -1,10 +1,16 @@
-= f.label :name
-= f.text_field :name
+.field
+  = f.label 'キャラ名'
+  = f.text_field :name
 
-= f.label :description
-= f.text_field :description
+.field
+  = f.label '説明'
+  = f.text_field :description
 
 - Animation.all.each do |animation|
-  br
-  = animation.name
-  = f.check_box :animation_ids, { multiple: true, include_hidden: false, class: "ui dropdown" }, animation[:id]
+  .ui.card
+    .content
+      .header
+        .inline.field
+          .ui.checkbox
+            = f.label animation.name
+            = f.check_box :animation_ids, { multiple: true, include_hidden: false, class: "ui dropdown" }, animation[:id]
