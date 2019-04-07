@@ -1,7 +1,15 @@
-.field
-  = f.label '作品名'
-  = f.text_field :name
+.ui.segment
+  - if f.object.persisted? && f.object.image?
+    = image_tag f.object.image.to_s, class: 'ui centered large image'
+  - else
+    = f.hidden_field :image_cache
+  .field
+    = f.file_field :image
 
-.field
-  = f.label '説明'
-  = f.text_field :description
+  .field
+    = f.label '作品名'
+    = f.text_field :name
+
+  .field
+    = f.label '説明'
+    = f.text_field :description

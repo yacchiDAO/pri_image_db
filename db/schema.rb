@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "animations", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
+    t.string "image"
   end
 
   create_table "character_animations", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "characters", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
+    t.string "image"
   end
 
   create_table "image_info_tags", force: :cascade do |t|

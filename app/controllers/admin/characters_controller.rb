@@ -52,6 +52,6 @@ class Admin::CharactersController < Admin::ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:name, :description, animation_ids: [])
+    params.require(:character).permit(:name, :description, :image, :image_cache, :remove_image, animation_ids: [])
   end
 end

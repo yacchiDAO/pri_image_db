@@ -7,6 +7,9 @@ h1
   = render 'form', f: f
   - f.object.animation.characters.each do |character|
     .ui.card
+      - if character.image.present?
+        .image
+          = image_tag character.image.to_s
       .content
         .header
           .inline.field

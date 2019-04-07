@@ -6,6 +6,9 @@ h1 キャラクター
   .ui.cards
     - @characters.each do |character|
       = link_to edit_admin_character_path(character), class: 'ui link card' do
+        - if character.image.present?
+          .image
+            = image_tag character.image.to_s
         .content
           .header
             = character.name

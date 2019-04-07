@@ -6,6 +6,9 @@ h1 作品
   .ui.cards
     - @animations.each do |animation|
       = link_to edit_admin_animation_path(animation), class: 'ui link card' do
+        - if animation.image.present?
+          .image
+            = image_tag animation.image.to_s
         .content
           .header
             = animation.name

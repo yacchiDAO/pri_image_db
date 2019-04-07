@@ -2,8 +2,7 @@
   - if f.object.persisted? && f.object.image?
     = image_tag f.object.image.to_s, class: 'ui centered large image'
   - else
-    - f.hidden_field :image_cache
-    - f.file_field :image
+    = f.hidden_field :image_cache
   .field
     = f.file_field :image
 

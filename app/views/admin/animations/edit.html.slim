@@ -1,6 +1,6 @@
 h1 作品- 編集 #:#{@animation.id}
 
-= link_to 'キャラ一覧へ', admin_animations_path, class: 'ui green button'
+= link_to '作品一覧へ', admin_animations_path, class: 'ui green button'
 
 .ui.segment
   = form_for([:admin, @animation], html: { class: 'ui form' })  do |f|

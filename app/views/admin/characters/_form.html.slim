@@ -1,16 +1,23 @@
-.field
-  = f.label 'キャラ名'
-  = f.text_field :name
+.ui.segment
+  - if f.object.persisted? && f.object.image?
+    = image_tag f.object.image.to_s, class: 'ui centered large image'
+  - else
+    = f.hidden_field :image_cache
+  .field
+    = f.file_field :image
+  .field
+    = f.label 'キャラ名'
+    = f.text_field :name
 
-.field
-  = f.label '説明'
-  = f.text_field :description
+  .field
+    = f.label '説明'
+    = f.text_field :description
 
-- Animation.all.each do |animation|
-  .ui.card
-    .content
-      .header
-        .inline.field
-          .ui.checkbox
-            = f.label animation.name
-            = f.check_box :animation_ids, { multiple: true, include_hidden: false, class: "ui dropdown" }, animation[:id]
+  - Animation.all.each do |animation|
+    .ui.card
+      .content
+        .header
+          .inline.field
+            .ui.checkbox
+              = f.label animation.name
+              = f.check_box :animation_ids, { multiple: true, include_hidden: false, class: "ui dropdown" }, animation[:id]
