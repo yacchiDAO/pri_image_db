@@ -1,0 +1,21 @@
+h1 キャラクター選択(複数選択でAND)
+= render 'search_step', animation: @animation, characters: nil
+
+= search_form_for(@q, url: character_images_path, class: 'ui form') do |f|
+  = f.submit '検索', name: nil, class: 'ui button green'
+  .ui.segment
+    .field 
+      = f.hidden_field :animation_id_eq, value: @animation&.id
+      .ui.cards
+        - @characters.each do |character|
+          label
+            .ui.card
+              - if character.image.present?
+                .image
+                  = image_tag character.image.to_s
+              .content
+                .header
+                  .inline.field
+                    .ui.checkbox
+                      = f.label character.name
+                      = f.check_box :character_images_character_id_eq_any, { multiple: true, include_hidden: false }, character.id

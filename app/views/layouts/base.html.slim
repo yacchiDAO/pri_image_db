@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title
+      | PriImageTalk
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+    .ui.top.stackable.labeled.inverted.pink.visible.sidebar.menu
+      = link_to images_path, class: 'item ui link inverted' do
+        | top
+      = link_to select_animation_images_path, class: 'item ui link inverted' do
+        | キャラクターで絞り込む
+
+    .pusher
+      .content
+        .ui.padding.stackable.container
+          - if flash.present?
+            .ui.positive.message
+              - flash.each do |key, value|
+                = content_tag(:div, value, class: "#{key}")
+          == yield

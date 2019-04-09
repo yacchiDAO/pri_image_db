@@ -1,0 +1,33 @@
+h2.ui.header
+  - if @image.image_info.line.present?
+    = @image.image_info.line
+  - else
+    | セリフなし
+
+= image_tag @image.image.to_s
+
+h2.ui.header = @image.image_info.description
+
+h2.ui.header 作品
+= search_form_for(@q, url: character_images_path, class: 'ui form') do |f|
+  = f.hidden_field :animation_id_eq, value: @image.animation_id
+  = button_tag type: 'submit', class: 'ui link card'
+    - if @image.animation.image.present?
+      .image
+        = image_tag @image.animation.image.to_s
+    .content
+      .header
+        = @image.animation.name
+
+h2 キャラ
+.ui.cards
+  - @image.characters.each do |character|
+    = search_form_for(@q, url: character_images_path, class: 'ui form') do |f|
+      = f.hidden_field :character_images_character_id_in, value: [character.id]
+      = button_tag type: 'submit', class: 'ui link card'
+        - if character.present?
+          .image
+            = image_tag character.image.to_s
+        .content
+          .header
+            = character.name

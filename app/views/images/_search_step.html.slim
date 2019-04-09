@@ -1,0 +1,20 @@
+.ui.steps
+  = link_to select_animation_images_path, class: 'link step'
+    .content
+      .title
+        | 作品
+      .description
+        - if animation.present?
+          = animation.name
+        - else
+          | 絞り込みなし
+        
+  = link_to select_characters_images_path(animation_id: animation&.id), class: 'link step'
+    .content
+      .title
+        | キャラ
+      .description
+        - if characters.present?
+          = characters.pluck(:name).join(',')
+        - else
+          | 絞り込みなし 

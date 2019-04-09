@@ -1,0 +1,16 @@
+.ui.segment
+  h2 
+    i.ui.search.icon
+    | 検索条件
+  = search_form_for(@q, url: images_path, class: 'ui form') do |f|
+    .field 
+      = f.label '作品'
+      = f.collection_select :animation_id_in, Animation.all, :id, :name, { include_blank: true }, { class: 'ui dropdown', multiple: true }
+    .field 
+      = f.label 'キャラ'
+      = f.collection_select :character_images_character_id_eq_any, Character.all, :id, :name, { include_blank: true }, { class: 'ui dropdown', multiple: true }
+    /.field
+      /= f.label 'セリフ'
+      /= f.search_field :image_info_line_matches
+    = f.submit '検索', name: nil, class: 'ui button green'
+    = link_to '検索条件初期化', images_path, class: 'ui button gray'

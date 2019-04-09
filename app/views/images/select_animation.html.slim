@@ -1,0 +1,17 @@
+h1 作品を選択
+= render 'search_step', animation: nil, characters: nil
+
+.ui.segment
+  .ui.cards
+    = link_to select_characters_images_path, class: 'ui link card'
+      .content
+        .header
+          | 選択しない
+    - @animations.each do |animation|
+      = link_to select_characters_images_path(animation_id: animation.id), class: 'ui link card'
+        - if animation.image.present?
+          .image
+            = image_tag animation.image.to_s
+        .content
+          .header
+            = animation.name

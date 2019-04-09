@@ -12,11 +12,11 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require cocoon
 // Loads all Semantic javascripts
 //= require jquery
 //= require jquery_ujs
 //= require semantic-ui
+//= require cocoon
 //= require_tree .
 
 $(function() {
