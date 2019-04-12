@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'images#index', as: :root
+    get 'login', to: 'sessions#new',  as: :new_session
+    post 'login', to: 'sessions#create', as: :session
+    delete 'logout', to: 'sessions#destroy', as: :destroy_session
     resources :images
     resources :animations, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :characters, only: [:index, :new, :edit, :create, :update, :destroy]

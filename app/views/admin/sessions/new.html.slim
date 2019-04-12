@@ -1,0 +1,22 @@
+h1
+  i.user.icon
+  | 管理者ログイン
+
+.ui.segment
+  = form_for(@admin, url: admin_session_path, html: { class: 'ui form' }) do |f|
+    .ui.stackable.grid
+      .row
+        .six.wide.column
+          .field
+            = f.label :login_id
+            = f.text_field :login_id
+
+      .row
+        .six.wide.column
+          .field
+            = f.label :password
+            = f.password_field :password
+
+      .row
+        .six.wide.column
+          = f.submit 'ログイン', class: 'ui button primary'
