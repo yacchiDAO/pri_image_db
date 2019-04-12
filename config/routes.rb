@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resources :animations, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :characters, only: [:index, :new, :edit, :create, :update, :destroy]
   end
+  get '*anything' => 'errors#routing_error'
 end

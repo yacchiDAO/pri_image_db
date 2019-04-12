@@ -1,0 +1,9 @@
+.ui.icon.message
+  .ui.small.image
+    = image_tag '/error.png'
+  .content
+    .header
+      | 404 Not Found
+    .description
+      | ギャフン！指定されたURLは見つかりません！
+      p.url = request.url
