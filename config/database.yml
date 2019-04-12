@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: pri_image_talk_production
   username: pri_image_talk
   password: <%= ENV['PRI_IMAGE_TALK_DATABASE_PASSWORD'] %>
