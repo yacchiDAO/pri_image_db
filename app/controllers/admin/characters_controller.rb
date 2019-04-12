@@ -13,7 +13,7 @@ class Admin::CharactersController < Admin::ApplicationController
   
   def create
     @character = Character.new(character_params)
-    if @character.save()
+    if @character.save
       flash[:notice] = '新規作成しました'
       redirect_to edit_admin_character_path(@character)
     else

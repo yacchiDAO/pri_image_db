@@ -13,7 +13,7 @@ class Admin::AnimationsController < Admin::ApplicationController
   
   def create
     @animation = Animation.new(animation_params)
-    if @animation.save()
+    if @animation.save
       flash[:notice] = '新規作成しました'
       redirect_to edit_admin_animation_path(@animation)
     else

@@ -33,7 +33,8 @@ class ImagesController < ApplicationController
   end
 
   def create
-    if @image = Image.create(image_params)
+    @image = Image.new(image_params)
+    if @image.save
       flash[:notice] = 'アップロードしました'
       redirect_to edit_image_path(@image)
     else

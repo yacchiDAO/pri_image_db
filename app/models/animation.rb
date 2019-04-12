@@ -5,4 +5,6 @@ class Animation < ApplicationRecord
 
   accepts_nested_attributes_for :character_animations, allow_destroy: true
   mount_uploader :image, ImageUploader
+
+  validates :name, presence: true
 end

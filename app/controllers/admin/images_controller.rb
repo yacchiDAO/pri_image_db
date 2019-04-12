@@ -12,7 +12,8 @@ class Admin::ImagesController < Admin::ApplicationController
   end
   
   def create
-    if @image = Image.create(image_params)
+    @image = Image.new(image_params)
+    if @image.save
       flash[:notice] = '新規作成しました'
       redirect_to edit_admin_image_path(@image)
     else

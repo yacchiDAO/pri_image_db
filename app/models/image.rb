@@ -5,6 +5,8 @@ class Image < ApplicationRecord
 
   accepts_nested_attributes_for :characters, allow_destroy: true
 
+  validates :image, presence: true
+
   mount_uploader :image, ImageUploader
 
   scope :character_ids_and_search, -> character_ids {
