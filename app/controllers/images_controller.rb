@@ -11,20 +11,20 @@ class ImagesController < ApplicationController
 
   def search 
     @animation = Animation.find_by(id: params[:q][:animation_id_eq])
-    @characters = Character.where(id: params[:q][:character_images_character_id_eq_any])
+    @characters = Character.where(id: params[:q][:character_images_character_id_eq_any]).order('id')
     @line = params[:q][:line_cont]
   end
 
   def select_animation
-    @animations = Animation.all
+    @animations = Animation.all.order('id')
   end
 
   def select_characters
     @animation = Animation.find_by(id: params[:animation_id])
     if @animation.present?
-      @characters = Character.includes(:animations).where(animations: { id: @animation.id })
+      @characters = Character.includes(:animations).where(animations: { id: @animation.id }).order('characters.id')
     else
-      @characters = Character.all
+      @characters = Character.all.order('id')
     end
   end
 

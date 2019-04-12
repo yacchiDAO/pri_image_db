@@ -7,7 +7,7 @@ h1
   = render 'form', f: f
   .ui.segment
     .ui.cards
-      - f.object.animation.characters.each do |character|
+      - f.object.animation.characters.order('id').each do |character|
         label
           .ui.card
             - if character.image.present?

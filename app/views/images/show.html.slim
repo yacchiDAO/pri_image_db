@@ -27,7 +27,7 @@ h2 キャラ
 .ui.cards
   - @image.characters.each do |character|
     = search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
-      = f.hidden_field :character_images_character_id_eq_any, value: [character.id]
+      = f.hidden_field :character_images_character_id_eq_any, value: [character.id], multiple: true
       = button_tag type: 'submit', class: 'ui link card'
         - if character.present?
           .image
