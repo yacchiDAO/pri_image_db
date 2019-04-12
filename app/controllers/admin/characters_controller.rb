@@ -3,7 +3,7 @@ class Admin::CharactersController < Admin::ApplicationController
 
   def index
     @q = Character.ransack(params[:q])
-    @q.sorts = 'id desc' if @q.sorts.empty?
+    @q.sorts = 'id' if @q.sorts.empty?
     @characters = @q.result(distinct: true).page(params[:page])
   end
 

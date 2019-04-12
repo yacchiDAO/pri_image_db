@@ -3,7 +3,7 @@ class Admin::AnimationsController < Admin::ApplicationController
 
   def index
     @q = Animation.ransack(params[:q])
-    @q.sorts = 'id desc' if @q.sorts.empty?
+    @q.sorts = 'id' if @q.sorts.empty?
     @animations = @q.result(distinct: true).page(params[:page])
   end
 
