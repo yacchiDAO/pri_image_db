@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
   has_many :character_images
   has_many :characters, through: :character_images
-  belongs_to :animation, dependent: :destroy
+  belongs_to :animation
 
   accepts_nested_attributes_for :characters, allow_destroy: true
 

@@ -20,4 +20,3 @@ h1
                     = f.label character.name
                     = f.check_box :character_ids, { multiple: true, include_hidden: false }, character[:id]
   = f.submit '更新', class: 'ui blue button'
-  = link_to '削除', admin_image_path(@image), method: 'delete', class: 'ui red button'

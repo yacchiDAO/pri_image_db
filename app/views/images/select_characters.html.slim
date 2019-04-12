@@ -1,7 +1,9 @@
 = render 'search_step', animation: @animation, characters: nil, line: nil
 
 = search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
-  = f.submit '検索', name: nil, class: 'ui button green'
+  = button_tag type: 'submit', class: 'ui labeld basic green button'
+    i.search.icon
+    | 検索
   .ui.segment
     .two.fields
       .field

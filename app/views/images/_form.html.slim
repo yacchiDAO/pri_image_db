@@ -8,7 +8,7 @@
 
   .field
     = f.label '作品タイトル'
-    = f.select :animation_id, Animation.all.pluck(:name, :id), {}, class: 'ui dropdown'
+    = f.select :animation_id, Animation.all.order('id').pluck(:name, :id), {}, class: 'ui dropdown'
 
   .field
     = f.label 'セリフ'
