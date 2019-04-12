@@ -1,7 +1,11 @@
 .ui.segment
   - if @images.empty?
-    h2.ui.header
-      | ギャフン！一致する画像が見つかりませんでした
+    .ui.icon.message
+      .ui.small.image
+        = image_tag '/error.png'
+      .content
+        .header
+          | ギャフン！一致する画像が見つかりませんでした
   - else
     .ui.cards
       - @images.each do |image|
@@ -9,5 +13,20 @@
           .image
             = image_tag image.image.to_s
           .content
+            .header
+              - if image.line.present?
+                = image.line
+              - else
+                | セリフなし
+            .meta
+              = image.animation.name
             .description
-              = image.image_info.description
+              = image.characters.pluck(:name).join(', ')
+          .extra.content
+            span
+              = image.open_count
+              |  views
+            span.right.floated
+              | 投稿日時：
+              = l image.created_at
+= paginate @images

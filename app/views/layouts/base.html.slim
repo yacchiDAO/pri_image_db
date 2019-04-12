@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | PriImageTalk
+      | PriImage
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -10,11 +10,16 @@ html
     = javascript_include_tag 'application'
 
   body
-    .ui.top.stackable.labeled.inverted.pink.visible.sidebar.menu
-      = link_to images_path, class: 'item ui link inverted' do
-        | top
-      = link_to select_animation_images_path, class: 'item ui link inverted' do
-        | キャラクターで絞り込む
+    .ui.pink.inverted.segment
+      .ui.top.stackable.labeled.inverted.pink.secondary.pointing.visible.sidebar.menu
+        = link_to images_path, class: 'item ui link inverted' do
+          | Pri♡Image
+        = link_to select_animation_images_path, class: 'item ui link inverted' do
+          i.search.icon
+          | Search
+        = link_to new_image_path, class: 'item ui link right inverted' do
+          i.cloud.upload.icon
+          | Upload
 
     .pusher
       .content

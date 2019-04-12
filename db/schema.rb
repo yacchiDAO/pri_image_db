@@ -42,15 +42,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "image"
   end
 
-  create_table "image_info_tags", force: :cascade do |t|
-    t.integer "image_info_id", null: false
+  create_table "image_tags", force: :cascade do |t|
+    t.integer "image_id", null: false
     t.integer "tag_id", null: false
-  end
-
-  create_table "image_infos", force: :cascade do |t|
-    t.string "image_id", null: false
-    t.string "line", null: false
-    t.string "description"
   end
 
   create_table "images", force: :cascade do |t|
@@ -58,6 +52,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "animation_id", null: false
+    t.string "line"
+    t.string "description"
+    t.integer "open_count", default: 0
   end
 
   create_table "tags", force: :cascade do |t|

@@ -18,3 +18,12 @@
           = characters.pluck(:name).join(',')
         - else
           | 絞り込みなし 
+  = link_to select_characters_images_path(animation_id: animation&.id), class: 'link step'
+    .content
+      .title
+        | セリフ
+      .description
+        - if line.present?
+          = line
+        - else
+          | 絞り込みなし

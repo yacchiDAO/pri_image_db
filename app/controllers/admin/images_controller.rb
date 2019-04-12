@@ -54,10 +54,10 @@ class Admin::ImagesController < Admin::ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, image_info_attributes: [:line, :description])
+    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description)
   end
 
   def update_image_params
-    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, image_info_attributes: [:line, :description], character_ids: [])
+    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, character_ids: [])
   end
 end

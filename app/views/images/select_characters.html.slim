@@ -1,11 +1,16 @@
-h1 キャラクター選択(複数選択でAND)
-= render 'search_step', animation: @animation, characters: nil
+= render 'search_step', animation: @animation, characters: nil, line: nil
 
-= search_form_for(@q, url: character_images_path, class: 'ui form') do |f|
+= search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
   = f.submit '検索', name: nil, class: 'ui button green'
   .ui.segment
-    .field 
-      = f.hidden_field :animation_id_eq, value: @animation&.id
+    .two.fields
+      .field
+        = f.label 'セリフ'
+        = f.text_field :line_cont
+    .ui.hidden.divider
+    .fields
+      .field 
+        = f.hidden_field :animation_id_eq, value: @animation&.id
       .ui.cards
         - @characters.each do |character|
           label

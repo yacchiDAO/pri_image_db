@@ -9,8 +9,8 @@
     .field 
       = f.label 'キャラ'
       = f.collection_select :character_images_character_id_eq_any, Character.all, :id, :name, { include_blank: true }, { class: 'ui dropdown', multiple: true }
-    /.field
-      /= f.label 'セリフ'
-      /= f.search_field :image_info_line_matches
+    .field
+      = f.label 'セリフ'
+      = f.search_field :line_matches
     = f.submit '検索', name: nil, class: 'ui button green'
     = link_to '検索条件初期化', images_path, class: 'ui button gray'
