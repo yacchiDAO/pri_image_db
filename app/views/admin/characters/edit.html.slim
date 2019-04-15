@@ -1,6 +1,6 @@
 h1 キャラ - 編集 #:#{@character.id}
 
-= link_to '作品一覧へ', admin_characters_path, class: 'ui green button'
+= link_to 'キャラ一覧へ', admin_characters_path, class: 'ui green button'
 
 .ui.segment
   = form_for([:admin, @character], html: { class: 'ui form' })  do |f|
