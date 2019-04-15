@@ -10,6 +10,7 @@ html
     = javascript_include_tag 'application'
 
   body
+    /- unless @smartphone
     .ui.pink.inverted.segment
       .ui.top.stackable.labeled.inverted.pink.secondary.pointing.visible.sidebar.menu
         = link_to images_path, class: 'item ui link inverted' do
@@ -24,6 +25,28 @@ html
     .pusher
       .content
         .ui.padding.stackable.container
+          - if flash.present?
+            .ui.positive.message
+              - flash.each do |key, value|
+                = content_tag(:div, value, class: "#{key}")
+          == yield
+    /- if @smartphone
+      header.smartphone.header
+        nav.gnav
+          .gnav.menu
+            li.gnav.menu.item
+              = link_to images_path, class: 'item ui link inverted' do
+                | Pri♡Image
+            li.gnav.menu.item
+              = link_to select_animation_images_path, class: 'item ui link inverted' do
+                i.search.icon
+                | Search
+            li.gnav.menu.item
+              = link_to new_image_path, class: 'item ui link inverted' do
+                i.cloud.upload.icon
+                | Upload
+      .menu.content
+        .ui.stackable.container
           - if flash.present?
             .ui.positive.message
               - flash.each do |key, value|
