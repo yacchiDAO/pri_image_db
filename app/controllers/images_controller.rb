@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
   def search 
     @animation = Animation.find_by(id: params[:q][:animation_id_eq])
     @characters = Character.where(id: params[:q][:character_images_character_id_eq_any]).order('id')
-    @line = params[:q][:line_cont]
+    @line = params[:q][:line_or_description_cont]
   end
 
   def select_animation
