@@ -8,5 +8,5 @@ class Character < ApplicationRecord
   accepts_nested_attributes_for :animations, allow_destroy: true
   mount_uploader :image, ImageUploader
 
-  validates :image, presence: true
+  validates :name, presence: true
 end
