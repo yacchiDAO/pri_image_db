@@ -8,22 +8,41 @@ html
 
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
 
   body
-    .ui.pink.inverted.segment
-      .ui.top.stackable.labeled.inverted.pink.secondary.pointing.visible.sidebar.menu
+    - unless @smartphone
+      .ui.pink.inverted.segment
+        .ui.top.stackable.labeled.inverted.pink.secondary.pointing.visible.huge.sidebar.menu
+          = link_to images_path, class: 'item ui link inverted' do
+            | Pri♡Image
+          = link_to select_animation_images_path, class: 'item ui link inverted' do
+            i.search.icon
+            | Search
+          = link_to new_image_path, class: 'item ui link right inverted' do
+            i.cloud.upload.icon
+            | Upload
+
+      .pusher
+        .content
+          .ui.padding.stackable.container
+            - if flash.present?
+              .ui.positive.message
+                - flash.each do |key, value|
+                  = content_tag(:div, value, class: "#{key}")
+            == yield
+    - if @smartphone
+      .ui.inverted.pink.bottom.three.item.visible.fixed.huge.sidebar.menu
         = link_to images_path, class: 'item ui link inverted' do
           | Pri♡Image
         = link_to select_animation_images_path, class: 'item ui link inverted' do
           i.search.icon
           | Search
-        = link_to new_image_path, class: 'item ui link right inverted' do
+        = link_to new_image_path, class: 'item ui link inverted' do
           i.cloud.upload.icon
           | Upload
-
-    .pusher
-      .content
-        .ui.padding.stackable.container
+      .content.smartphone
+        .ui.stackable.container
           - if flash.present?
             .ui.positive.message
               - flash.each do |key, value|

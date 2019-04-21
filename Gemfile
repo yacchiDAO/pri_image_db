@@ -43,6 +43,7 @@ gem 'kaminari'
 gem 'cocoon'
 gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'jquery-rails'
+gem 'rack-user_agent'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
