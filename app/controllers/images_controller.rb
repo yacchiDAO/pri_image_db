@@ -1,8 +1,11 @@
 class ImagesController < ApplicationController
-  before_action :search_images, only: [:index, :show, :select_characters, :search, :line]
+  before_action :search_images, only: [:show, :select_characters, :search, :line]
   before_action :set_image, only: [:edit, :show, :update]
 
   def index
+    @new_images = Image.order('created_at desc').page(params[:page]).per(6)
+    @popular_images = Image.order('open_count desc').page(params[:page]).per(6)
+    @random_images = Image.order("RANDOM()").page(params[:page]).per(6)
   end
 
   def show

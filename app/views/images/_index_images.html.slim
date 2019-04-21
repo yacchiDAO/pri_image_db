@@ -1,5 +1,5 @@
 .ui.segment
-  - if @images.empty?
+  - if images.empty?
     .ui.icon.message
       .ui.small.image
         = image_tag '/error.png'
@@ -8,7 +8,7 @@
           | ギャフン！画像が見つかりませんでした
   - else
     .ui.cards
-      - @images.each do |image|
+      - images.each do |image|
         = link_to image_path(image), class: 'ui link card'
           .image
             = image_tag image.image.to_s
@@ -29,4 +29,4 @@
             span.right.floated
               | 投稿日時：
               = l image.created_at
-= paginate @images
+= paginate images
