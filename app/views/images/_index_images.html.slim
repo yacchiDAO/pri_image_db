@@ -9,7 +9,7 @@
   - else
     .ui.cards
       - images.each do |image|
-        = link_to image_path(image), class: 'ui link card'
+        = link_to image_path(image), class: 'ui link centered card'
           .image
             = image_tag image.image.to_s
           .content
