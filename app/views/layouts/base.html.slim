@@ -31,6 +31,12 @@ html
                 - flash.each do |key, value|
                   = content_tag(:div, value, class: "#{key}")
             == yield
+            .ui.divider
+            h4.ui.right.floated.header
+              | お問い合わせ：
+              = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
+              | ，アンケート・要望：
+              = link_to 'こちら', Settings.question, target: '_blank'
     - if @smartphone
       .ui.inverted.pink.bottom.three.item.visible.fixed.huge.sidebar.menu
         = link_to images_path, class: 'item ui link inverted' do
@@ -48,3 +54,9 @@ html
               - flash.each do |key, value|
                 = content_tag(:div, value, class: "#{key}")
           == yield
+        .ui.divider
+        h4.ui.right.floated.header
+          | お問い合わせ：
+          = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
+          | ，アンケート・要望：
+          = link_to 'こちら', Settings.question, target: '_blank'
