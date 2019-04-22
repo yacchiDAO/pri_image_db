@@ -1,8 +1,10 @@
 h2.ui.header
-  - if @image.line.present?
-    = @image.line
-  - else
-    | セリフなし
+  = link_to edit_image_path(@image)
+    - if @image.line.present?
+      = @image.line
+    - else
+      | セリフなし
+    i.edit.icon
 
 = image_tag @image.image.to_s, class: 'ui big image'
 

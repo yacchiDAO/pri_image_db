@@ -5,6 +5,13 @@ h1
 
 = form_for(@image, html: { class: 'ui form' })  do |f|
   = render 'form', f: f
+  .field
+    = f.label 'セリフ'
+    = f.text_field :line
+
+  .field
+    = f.label '説明'
+    = f.text_field :description
   .ui.segment
     .ui.cards
       - f.object.animation.characters.order('id').each do |character|

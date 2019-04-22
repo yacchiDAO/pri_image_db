@@ -4,16 +4,7 @@
   - else
     = f.hidden_field :image_cache
     = f.file_field :image, required: true
-  .field
 
   .field
     = f.label '作品タイトル'
     = f.select :animation_id, Animation.all.order('id').pluck(:name, :id), {}, class: 'ui dropdown'
-
-  .field
-    = f.label 'セリフ'
-    = f.text_field :line
-
-  .field
-    = f.label '説明'
-    = f.text_field :description
