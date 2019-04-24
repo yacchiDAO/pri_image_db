@@ -15,3 +15,13 @@ services:
       - db
     environment:
       - "TZ=Japan"
+  redis:
+    image: redis
+  worker:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/pri_image_talk
+    links:
+      - db
+      - redis

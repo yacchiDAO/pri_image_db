@@ -1,0 +1,10 @@
+:daemon: false
+:concurrency: 8
+production:
+  :concurrency: 10
+:queues:
+  - create_tweet
+  - regular_tweet
+:schedule:
+  RegularTweetWorker:
+    cron: '0 */30 * * * *' # execute at every 30 minutes

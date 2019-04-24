@@ -5,4 +5,8 @@ aws:
 twitter:
   id: "<%= ENV['TWITTER_NAME'] %>"
   url: "<%= ENV['TWITTER_URL'] %>"
+  api_key: "<%= ENV['TWITTER_API_KEY']%>"
+  api_secret_key: "<%= ENV['TWITTER_API_SECRET_KEY']%>"
+  access_token: "<%= ENV['TWITTER_ACCESS_TOKEN']%>"
+  access_token_secret: "<%= ENV['TWITTER_ACCESS_TOKEN_SECRET']%>"
 question: "<%= ENV['QUESTION'] %>"
