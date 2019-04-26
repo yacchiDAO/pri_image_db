@@ -10,3 +10,4 @@ twitter:
   access_token: "<%= ENV['TWITTER_ACCESS_TOKEN']%>"
   access_token_secret: "<%= ENV['TWITTER_ACCESS_TOKEN_SECRET']%>"
 question: "<%= ENV['QUESTION'] %>"
+url: "http://pri-image-db.site/"

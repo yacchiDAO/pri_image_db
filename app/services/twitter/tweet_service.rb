@@ -15,7 +15,7 @@ module Twitter
 
     def execute
       images = Rails.env.production? ? [open(@image.image.url)] : [File.new(@image.image.current_path)]
-      @twitter.update_with_media("#{@message}\n#{@image.animation.name}より\n#PriImage", images)
+      @twitter.update_with_media("#{@message}\n#{@image.animation.name}より\n\n#{::Settings.url}images/#{@image.id}\n#PriImage", images)
     end
   end
 end
