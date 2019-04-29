@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   layout 'base'
   before_action :check_smartphone
+  protect_from_forgery
 
   class Forbidden < ActionController::ActionControllerError; end
   include ErrorHandlers if Rails.env.production?
