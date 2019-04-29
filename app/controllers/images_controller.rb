@@ -38,7 +38,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
-      CreateTweetWorker.perform_async(@image.id) if Rails.env.production?
+      # CreateTweetWorker.perform_async(@image.id) if Rails.env.production?
       flash[:notice] = 'アップロードしました'
       redirect_to edit_image_path(@image)
     else
