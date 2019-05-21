@@ -3,12 +3,12 @@ h1 作品を選択
 
 .ui.segment
   .ui.cards
-    = link_to select_characters_images_path, class: 'ui link card'
+    = link_to select_characters_images_path, class: 'ui link centered card'
       .content
         .header
           | 選択しない
     - @animations.each do |animation|
-      = link_to select_characters_images_path(animation_id: animation.id), class: 'ui link card'
+      = link_to select_characters_images_path(animation_id: animation.id), class: 'ui link centered card'
         - if animation.image.present?
           .image
             = image_tag animation.image.to_s

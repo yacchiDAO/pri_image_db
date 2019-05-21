@@ -1,5 +1,5 @@
 h2.ui.header
-  = link_to edit_image_path(@image)
+  = link_to edit_image_path(@image, @pages)
     - if @image.line.present?
       = @image.line
     - else

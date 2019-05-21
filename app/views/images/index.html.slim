@@ -8,10 +8,10 @@ h1 Pri♡Image
     p
       | プリティーシリーズのキャプ画像DBです
 h2.ui.header.padding.divider 新着
-= render 'index_images', images: @new_images
+= render 'index_images', images: @new_images, page: :new
 
 h2.ui.header.padding.divider ランダム
-= render 'index_images', images: @random_images
+= render 'index_images', images: @random_images, page: :random
 
 h2.ui.header.padding.divider 人気
-= render 'index_images', images: @popular_images
+= render 'index_images', images: @popular_images, page: :popular

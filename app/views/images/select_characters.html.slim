@@ -10,19 +10,16 @@
         = f.label 'セリフ・キーワード'
         = f.text_field :line_or_description_cont, id: 'line-form'
     .ui.hidden.divider
-    .fields
-      .field 
-        = f.hidden_field :animation_id_eq, value: @animation&.id
-      .ui.cards
-        - @characters.each do |character|
-          label
-            .ui.card
-              - if character.image.present?
-                .image
-                  = image_tag character.image.to_s
-              .content
-                .header
-                  .inline.field
-                    .ui.checkbox
-                      = f.label character.name
-                      = f.check_box :character_images_character_id_eq_any, { multiple: true, include_hidden: false }, character.id
+      = f.hidden_field :animation_id_eq, value: @animation&.id
+    .ui.cards
+      - @characters.each do |character|
+        .ui.centered.card
+          - if character.image.present?
+            .image
+              = image_tag character.image.to_s
+          .content
+            .header
+              .inline.field
+                .ui.checkbox
+                  = f.label character.name
+                  = f.check_box :character_images_character_id_eq_any, { multiple: true, include_hidden: false }, character.id

@@ -9,7 +9,7 @@
   - else
     .ui.cards
       - images.each do |image|
-        = link_to image_path(image), class: 'ui link centered card'
+        = link_to image_path(image, @pages), class: 'ui link centered card'
           .image
             = image_tag image.image.to_s
           .content
@@ -29,4 +29,4 @@
             span.right.floated
               | 投稿日時：
               = l image.created_at
-= paginate images
+= paginate images, param_name: page
