@@ -2,6 +2,8 @@ create_table "animations", force: :cascade do |t|
   t.string "name", null: false
   t.string "description"
   t.string "image"
+
+  t.index :image
 end
 
 create_table "admins", force: :cascade do |t|
@@ -13,6 +15,8 @@ create_table "characters", force: :cascade do |t|
   t.string "name", null: false
   t.string "description"
   t.string "image"
+
+  t.index :image
 end
 
 create_table "images", force: :cascade do |t|
@@ -22,24 +26,31 @@ create_table "images", force: :cascade do |t|
   t.string "description"
   t.integer "open_count", default: 0
   t.timestamps
+ 
+  t.index [:image, :open_count]
 end
 
 create_table "tags", force: :cascade do |t|
-  t.string "login_id", null: false
-  t.string "password_digest", null: false
+  t.string "name", null: false
 end
 
 create_table "character_animations", force: :cascade do |t|
   t.integer "character_id", null: false
   t.integer "animation_id", null: false
+
+  t.index [:character_id, :animation_id]
 end
 
 create_table "character_images", force: :cascade do |t|
   t.integer "character_id", null: false
   t.integer "image_id", null: false
+
+  t.index [:character_id, :image_id]
 end
 
 create_table "image_tags", force: :cascade do |t|
   t.integer "image_id", null: false
   t.integer "tag_id", null: false
+
+  t.index [:tag_id, :image_id]
 end
