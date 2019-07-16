@@ -21,7 +21,7 @@
             .meta
               = image.animation.name
             .description
-              = image.characters.pluck(:name).join(', ')
+              = image.characters.map(&:name).join(', ')
           .extra.content
             span
               = image.open_count

@@ -70,7 +70,7 @@ class ImagesController < ApplicationController
   end
   
   def search_images
-    @q = Image
+    @q = Image.includes(:animation, :character_images, :characters)
 
     # fackin relation and search
     if params[:q].present? && @character_ids = params[:q][:character_images_character_id_eq_any] 
@@ -82,7 +82,7 @@ class ImagesController < ApplicationController
 
     @q = @q.ransack(params[:q])
 
-    @q.sorts = 'open_count desc' if @q.sorts.empty?
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
     @images = @q.result(distinct: true).page(params[:page])
   end
 

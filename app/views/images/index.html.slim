@@ -10,7 +10,7 @@ h1 Pri♡Image
 = search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
   .inline.fields
     .field
-      = sort_link @q, :id, '登録日時', {}, { class: 'ui right labeled icon button' }
+      = sort_link @q, :created_at, '登録日時', {}, { class: 'ui right labeled icon button' }
     .field
       = sort_link @q, :open_count, '表示回数', {}, { class: 'ui right labeled icon button' }
 = render 'index_images', images: @images, page: :page
