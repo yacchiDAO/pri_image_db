@@ -12,8 +12,8 @@ Admin.create(login_id: 'admin', password: 'password', password_confirmation: 'pa
 
 
 # 作品
-animation_list = ['プリティーリズムオーロラドリーム',
-                  'プリティーリズムディアマイフューチャー',
+animation_list = ['プリティーリズム・オーロラドリーム',
+                  'プリティーリズム・ディアマイフューチャー',
                   'プリティーリズム・レインボーライブ',
                   'プリパラ',
                   'アイドルタイムプリパラ',

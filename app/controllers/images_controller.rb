@@ -1,12 +1,8 @@
 class ImagesController < ApplicationController
-  before_action :set_pages
-  before_action :search_images, only: [:show, :select_characters, :search, :line]
+  before_action :search_images, only: [:index, :show, :select_characters, :search, :line]
   before_action :set_image, only: [:edit, :show, :update]
 
   def index
-    @new_images = Image.order('created_at desc').page(params[:new]).per(6)
-    @popular_images = Image.order('open_count desc').page(params[:popular]).per(6)
-    @random_images = Image.order("RANDOM()").page(params[:random]).per(6)
   end
 
   def show
@@ -74,7 +70,7 @@ class ImagesController < ApplicationController
   end
   
   def search_images
-    @q = Image.all
+    @q = Image.includes(:animation, :character_images, :characters)
 
     # fackin relation and search
     if params[:q].present? && @character_ids = params[:q][:character_images_character_id_eq_any] 
@@ -86,7 +82,7 @@ class ImagesController < ApplicationController
 
     @q = @q.ransack(params[:q])
 
-    @q.sorts = 'open_count desc' if @q.sorts.empty?
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
     @images = @q.result(distinct: true).page(params[:page])
   end
 
@@ -100,9 +96,5 @@ class ImagesController < ApplicationController
 
   def update_image_params
     params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, character_ids: [])
-  end
-
-  def set_pages
-    @pages = { new: params[:new], populer: params[:popular], random: params[:random] }
   end
 end

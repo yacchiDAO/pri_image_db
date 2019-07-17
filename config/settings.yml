@@ -11,3 +11,4 @@ twitter:
   access_token_secret: "<%= ENV['TWITTER_ACCESS_TOKEN_SECRET']%>"
 question: "<%= ENV['QUESTION'] %>"
 url: "http://pri-image-db.site/"
+prism_db_api_episode_url: 'https://prismdb.takanakahiko.me/api/episode/'
