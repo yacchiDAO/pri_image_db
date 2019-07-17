@@ -2,8 +2,6 @@ require 'net/https'
 
 module Episodes
   class SetEpisodesService
-    SERIES_HASH = Settings.series.to_hash
-
     def execute
       set_base_episodes
 
