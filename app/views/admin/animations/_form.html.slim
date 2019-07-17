@@ -13,3 +13,11 @@
   .field
     = f.label '説明'
     = f.text_field :description
+
+  .field
+    = f.label 'シリーズ名（外部API用）'
+    = f.text_field :series_name
+
+  .field
+    = f.label '話数'
+    = f.number_field :episode_num

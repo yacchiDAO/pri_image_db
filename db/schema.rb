@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false
     t.string "description"
     t.string "image"
+    t.integer "episode_num"
+    t.string "series_name"
     t.index ["image"], name: "index_animations_on_image"
   end
 
@@ -46,6 +48,21 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["image"], name: "index_characters_on_image"
   end
 
+  create_table "episodes", force: :cascade do |t|
+    t.integer "animation_id", null: false
+    t.integer "episode_num"
+    t.string "series"
+    t.string "subtitle"
+    t.string "animation_production"
+    t.string "story_board_jp"
+    t.string "story_board"
+    t.string "animation_supervision"
+    t.string "broadcast_date"
+    t.string "production"
+    t.string "script"
+    t.string "key"
+  end
+
   create_table "image_tags", force: :cascade do |t|
     t.integer "image_id", null: false
     t.integer "tag_id", null: false
@@ -60,6 +77,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "open_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "episode_id"
     t.index ["image", "open_count"], name: "index_images_on_image_and_open_count"
   end
 

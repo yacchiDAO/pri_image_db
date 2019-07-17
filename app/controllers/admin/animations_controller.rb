@@ -52,6 +52,6 @@ class Admin::AnimationsController < Admin::ApplicationController
   end
 
   def animation_params
-    params.require(:animation).permit(:name, :description, :image, :image_cache, :remove_image)
+    params.require(:animation).permit(:name, :description, :image, :image_cache, :remove_image, :series_name, :episode_num)
   end
 end
