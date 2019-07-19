@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is Capture Image Database for Pretty Series (Japanese Animation for every)
 
-Things you may want to cover:
+Everyone can upload and watch the Capture Image (Capture Image: Picture of Anime)
 
-* Ruby version
+This database can link the image to the many information, character, line, animation, description, episode and more...
 
-* System dependencies
+"Min-na Tomodachi, Min-na Idol"
 
-* Configuration
+## Environment
+- Ruby 2.5.1
+- Rails 5.2.2
 
-* Database creation
+- DB: postgresql
+- NoSQL: redis (for asynchronous processing, example: tweet regulary by sidekiq)
+- Development: Docker
+- Production: heroku
 
-* Database initialization
+## Setup for Development
+clone this repository and change delectory
+```shell
+# build Docker Image
+$ docker-compose build
 
-* How to run the test suite
+# setup database
+$ docker-compose run app rake db:create ridgepole:apply db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+# remove pids files and start server
+$ rm -rf tmp/pids && docker-compose up
+```
 
-* Deployment instructions
+Access `localhost:3000/` your brouwser
 
-* ...
+Stop Server: press `Ctr-l c` or `docker-compose down`
+
+Enter Rails console
+```shell
+$ docker-compose run app rails c
+```
+
+## How to Deploy
+deployment for heroku
+```shell
+# push and deploy master branch to heroku
+$ git push heroku master
+
+# db migration
+$ heroku run rake ridgepole:apply_heroku
+```
+
+production environment needs...
+- S3
+- postgresql
+- redis
+- parameters
