@@ -14,4 +14,6 @@ h1 Pri Image DB
       = sort_link @q, :created_at, '登録日時', {}, { class: 'ui right labeled icon button' }
     .field
       = sort_link @q, :open_count, '表示回数', {}, { class: 'ui right labeled icon button' }
+    .field
+      = link_to '作品一覧へ→', animations_path, class: 'ui button primary'
 = render 'index_images', images: @images, page: :page

@@ -28,6 +28,12 @@ h2.ui.header 作品
       .header
         = @image.animation.name
 
+- if @episode.present?
+  = link_to episode_animation_path(@image.animation, @episode), class: 'ui link card'
+    .content
+      .header
+        = "#{@image.episode} 話の情報"
+
 h2 キャラ
 .ui.cards
   - @image.characters.each do |character|

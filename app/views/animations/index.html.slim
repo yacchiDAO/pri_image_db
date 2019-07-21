@@ -1,0 +1,13 @@
+h1 作品・一覧
+
+table.ui.selectable.celled.table
+
+  thead
+    tr
+      th
+      th 作品名
+  tbody
+    - @animations.each do |animation|
+      tr
+        td= image_tag animation.image.to_s, class: 'ui centered small image'
+        td= link_to animation.name, animation_path(animation)

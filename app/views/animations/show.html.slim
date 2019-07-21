@@ -1,0 +1,10 @@
+h1= @animation.name
+
+table.ui.selectable.celled.table
+  thead
+    tr
+      th 作品名
+  tbody
+    - @episodes.each do |episode|
+      tr
+        td= link_to "#{episode.episode_num}話 #{episode.subtitle}", episode_animation_path(@animation, episode)

@@ -6,6 +6,7 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @episode = Episode.where(animation_id: @image.animation_id).find_by(episode_num: @image.episode)
     @image.open_count_increment
   end
 
@@ -16,6 +17,7 @@ class ImagesController < ApplicationController
       @animation = Animation.find_by(id: params[:q][:animation_id_eq])
       @characters = Character.where(id: params[:q][:character_images_character_id_eq_any]).order('id')
       @line = params[:q][:line_or_description_cont]
+      @episode = params[:q][:episode_eq]
     end
   end
 
@@ -68,6 +70,7 @@ class ImagesController < ApplicationController
     @character_ids = params[:character_ids]
     @animation_ids = params[:animation_ids]
     @line = params[:line]
+    @episode = params[:episode]
   end
   
   def search_images
@@ -96,6 +99,6 @@ class ImagesController < ApplicationController
   end
 
   def update_image_params
-    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, character_ids: [])
+    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, :episode, character_ids: [])
   end
 end

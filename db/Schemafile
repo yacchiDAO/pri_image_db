@@ -27,7 +27,7 @@ create_table "images", force: :cascade do |t|
   t.string "line"
   t.string "description"
   t.integer "open_count", default: 0
-  t.integer "episode_id", default: nil
+  t.integer "episode", default: nil
   t.timestamps
  
   t.index [:image, :open_count]

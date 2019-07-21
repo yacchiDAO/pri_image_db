@@ -1,0 +1,43 @@
+h1= @animation.name
+h2= "#{@episode.episode_num}話 #{@episode.subtitle}"
+
+= link_to '←作品一覧へ', images_path, class: 'ui button'
+
+- q = { episode_eq: @episode.episode_num, animation_id_eq: @episode.animation_id }
+= link_to 'この話の画像', search_images_path(q: q), class: 'ui button primary'
+
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | アニメーション演出
+  p= @episode.animation_production
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | 絵コンテ
+  p= @episode.story_board_jp
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | ストーリーボード
+  p= @episode.story_board
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | アニメーション監督
+  p= @episode.animation_supervision
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | 放送日時
+  p= @episode.broadcast_date
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | 演出
+  p= @episode.production
+table.ui.selectable.celled.table
+.ui.message
+  .header
+    | 脚本
+  p= @episode.script

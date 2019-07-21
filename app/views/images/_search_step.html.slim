@@ -2,10 +2,12 @@
   = link_to select_animation_images_path, class: 'link step'
     .content
       .title
-        | 作品
+        | 作品・話数
       .description
         - if animation.present?
           = animation.name
+          - if episode.present?
+            = " #{episode}話"
         - else
           | 絞り込みなし
         

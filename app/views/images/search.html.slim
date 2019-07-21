@@ -1,4 +1,4 @@
-= render 'search_step', animation: @animation, characters: @characters, line: @line
+= render 'search_step', animation: @animation, characters: @characters, line: @line, episode: @episode
 = search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
   .inline.fields
     .field

@@ -12,6 +12,11 @@ Rails.application.routes.draw do
       get 'select_characters'
     end
   end
+  resources :animations, only: [:index, :show] do
+    member do
+      get 'episode/:episode_id', to: 'animations#episode', as: :episode
+    end
+  end
 
   namespace :admin do
     root to: 'images#index', as: :root

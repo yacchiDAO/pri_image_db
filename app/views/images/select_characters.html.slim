@@ -1,4 +1,4 @@
-= render 'search_step', animation: @animation, characters: nil, line: nil
+= render 'search_step', animation: @animation, characters: nil, line: nil, episode: nil
 
 = search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
   = button_tag type: 'submit', class: 'ui labeld basic green button'
@@ -9,6 +9,9 @@
       .field
         = f.label 'セリフ・キーワード'
         = f.text_field :line_or_description_cont, id: 'line-form'
+      .field
+        = f.label '話数'
+        = f.number_field :episode_eq
     .ui.hidden.divider
       = f.hidden_field :animation_id_eq, value: @animation&.id
     .ui.cards
