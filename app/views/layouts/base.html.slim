@@ -37,6 +37,9 @@ html
               = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
               | ，アンケート・要望：
               = link_to 'こちら', Settings.question, target: '_blank'
+              | ，presented by 
+              i
+                = link_to 'prickathon', 'https://prickathon.connpass.com/', target: '_blank'
     - if @smartphone
       .ui.inverted.pink.bottom.three.item.visible.fixed.huge.sidebar.menu
         = link_to images_path, class: 'item ui link inverted' do
@@ -58,3 +61,6 @@ html
           = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
           | ，アンケート・要望：
           = link_to 'こちら', Settings.question, target: '_blank'
+          | ，presented by 
+          i
+            = link_to 'prickathon', 'https://prickathon.connpass.com/', target: '_blank'

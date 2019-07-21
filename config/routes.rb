@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   root to: 'images#index', as: :root
+  get 'what', to: 'home#index'
   resources :images, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get 'search'
