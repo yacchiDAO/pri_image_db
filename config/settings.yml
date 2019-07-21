@@ -9,6 +9,8 @@ twitter:
   api_secret_key: "<%= ENV['TWITTER_API_SECRET_KEY']%>"
   access_token: "<%= ENV['TWITTER_ACCESS_TOKEN']%>"
   access_token_secret: "<%= ENV['TWITTER_ACCESS_TOKEN_SECRET']%>"
+slack:
+  slack_token: "<%= ENV['SLACK_TOKEN'] %>"
 question: "<%= ENV['QUESTION'] %>"
 url: "http://pri-image-db.site/"
 prism_db_api_episode_url: 'https://prismdb.takanakahiko.me/api/episode/'

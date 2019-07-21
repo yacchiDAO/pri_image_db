@@ -5,6 +5,7 @@ production:
 :queues:
   - create_tweet
   - regular_tweet
+  - slack_notification
 :schedule:
   RegularTweetWorker:
     cron: '0 */30 * * * *' # execute at every 30 minutes

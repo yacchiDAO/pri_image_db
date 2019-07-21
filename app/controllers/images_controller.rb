@@ -41,6 +41,7 @@ class ImagesController < ApplicationController
     if @image.save
       # CreateTweetWorker.perform_async(@image.id) if Rails.env.production?
       flash[:notice] = 'アップロードしました'
+      SlackNotificationWorker.perform_async(@image.id)
       redirect_to edit_image_path(@image)
     else
       flash[:notice] = 'アップロードに失敗しました'
