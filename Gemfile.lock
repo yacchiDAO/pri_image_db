@@ -136,7 +136,7 @@ GEM
     et-orbi (1.2.0)
       tzinfo
     eventmachine (1.2.7)
-    excon (0.62.0)
+    excon (0.71.0)
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
