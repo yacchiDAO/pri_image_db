@@ -1,7 +1,7 @@
 h1= @animation.name
 h2= "#{@episode.episode_num}話 #{@episode.subtitle}"
 
-= link_to '←作品一覧へ', images_path, class: 'ui button'
+= link_to '←話数一覧へ', animation_path(@animation), class: 'ui button'
 
 - q = { episode_eq: @episode.episode_num, animation_id_eq: @episode.animation_id }
 = link_to 'この話の画像', search_images_path(q: q), class: 'ui button primary'

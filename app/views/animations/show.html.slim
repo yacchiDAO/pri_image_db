@@ -1,4 +1,6 @@
 h1= @animation.name
+- q = { animation_id_eq: @animation.id }
+= link_to 'この作品の画像', search_images_path(q: q), class: 'ui button primary'
 
 table.ui.selectable.celled.table
   thead

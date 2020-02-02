@@ -11,9 +11,14 @@ h1 Pri Image DB
 = search_form_for(@q, url: search_images_path, class: 'ui form') do |f|
   .inline.fields
     .field
+      = link_to select_animation_images_path, class: 'ui labeled icon button primary' do
+        i.search.icon
+        | 検索
+    .field
+      = link_to '作品一覧へ→', animations_path, class: 'ui button primary'
+  .inline.fields
+    .field
       = sort_link @q, :created_at, '登録日時', {}, { class: 'ui right labeled icon button' }
     .field
       = sort_link @q, :open_count, '表示回数', {}, { class: 'ui right labeled icon button' }
-    .field
-      = link_to '作品一覧へ→', animations_path, class: 'ui button primary'
 = render 'index_images', images: @images, page: :page
