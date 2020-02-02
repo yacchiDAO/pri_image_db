@@ -75,9 +75,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "line"
     t.string "description"
     t.integer "open_count", default: 0
+    t.integer "episode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "episode"
     t.index ["image", "open_count"], name: "index_images_on_image_and_open_count"
   end
 
