@@ -12,5 +12,5 @@ twitter:
 slack:
   slack_token: "<%= ENV['SLACK_TOKEN'] %>"
 question: "<%= ENV['QUESTION'] %>"
-url: "http://pri-image-db.site/"
+url: "https://pri-image-db.herokuapp.com/"
 prism_db_api_episode_url: 'https://prismdb.takanakahiko.me/api/episode/'
