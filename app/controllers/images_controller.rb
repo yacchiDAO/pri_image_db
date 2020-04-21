@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
     @image.open_count_increment
   end
 
-  def search 
+  def search
     if params[:q].nil?
       redirect_to images_path
     else
@@ -72,12 +72,12 @@ class ImagesController < ApplicationController
     @line = params[:line]
     @episode = params[:episode]
   end
-  
+
   def search_images
     @q = Image.includes(:animation, :character_images, :characters)
 
     # fackin relation and search
-    if params[:q].present? && @character_ids = params[:q][:character_images_character_id_eq_any] 
+    if params[:q].present? && @character_ids = params[:q][:character_images_character_id_eq_any]
       if @character_ids.size >= 2
         images = @q.character_ids_and_search(@character_ids)
         @q = Image.where(id: images.map{ |image| image.id })
