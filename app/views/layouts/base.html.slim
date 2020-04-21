@@ -9,6 +9,17 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta property="og:type" content="website"
+    meta property="og:url" content="#{Settings.url}"
+    meta property="og:title" content="Pri Image DB"
+    meta property='og:description' content='プリティーシリーズキャプ画像DB'
+    meta hid='description' name='description' content='プリティーシリーズキャプ画像DB'
+    meta name='twitter:site' content='@PriImage'
+    - if @image.present?
+      meta property="og:image" content="#{@image.image.to_s}",
+      meta name='twitter:card' content='photo'
+    - else
+      meta name='twitter:card' content='summary'
 
   body
     - unless @smartphone
@@ -37,7 +48,7 @@ html
               = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
               | ，アンケート・要望：
               = link_to 'こちら', Settings.question, target: '_blank'
-              | ，presented by 
+              | ，presented by
               i
                 = link_to 'prickathon', 'https://prickathon.connpass.com/', target: '_blank'
     - if @smartphone
@@ -61,6 +72,6 @@ html
           = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
           | ，アンケート・要望：
           = link_to 'こちら', Settings.question, target: '_blank'
-          | ，presented by 
+          | ，presented by
           i
             = link_to 'prickathon', 'https://prickathon.connpass.com/', target: '_blank'
