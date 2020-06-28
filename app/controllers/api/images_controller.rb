@@ -1,11 +1,11 @@
 class Api::ImagesController < Api::ApplicationController
   def index
     @images = Images::SearchImagesService.new(params[:q]).execute
-    # TODO: json serializer
-    render json: @images #, each_serializer: ImageSerializer
+    render json: @images, each_serializer: ImageSerializer
   end
 
   def random
-    # @image = Image rangdom
+    @image = Image.find_by(id: Image.pluck(:id).sample)
+    render json: @image, serializer: ImageSerializer
   end
 end
