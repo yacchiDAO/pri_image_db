@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :images, only: [:index]
+    get :random_image, to: 'images#random', as: :random
+  end
+
   namespace :admin do
     root to: 'images#index', as: :root
     get 'login', to: 'sessions#new',  as: :new_session

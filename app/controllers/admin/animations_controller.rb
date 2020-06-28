@@ -10,7 +10,7 @@ class Admin::AnimationsController < Admin::ApplicationController
   def new
     @animation = Animation.new
   end
-  
+
   def create
     @animation = Animation.new(animation_params)
     if @animation.save
