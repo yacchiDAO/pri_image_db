@@ -1,6 +1,6 @@
 class Api::ImagesController < Api::ApplicationController
   def index
-    @images = Images::SearchImagesService.new(params[:q]).execute
+    @images = Images::SearchImagesService.new(params[:q]).execute.page(params[:page])
     render json: @images, each_serializer: ImageSerializer
   end
 
