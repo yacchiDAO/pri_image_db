@@ -5,39 +5,48 @@ module Images
     end
 
     def execute
-      # Animation name -> animation_ids
-      # Character name -> character_ids -> image_ids
-      # Image.line
-      # Image.description
-      # Image と ImageCharacterを結合
-
       images = Image.includes(:animation, :characters)
-      query = {}
-      query[:animation_id] = animation_ids if animation_ids.present?
-      query[:characters] = { id: character_ids }  if character_ids.present?
-      query[:id] = image_ids if image_ids.present?
-      images.where(query)
+      images.where(id: image_ids)
     end
 
     private
 
     def image_ids
-      @image_ids ||= @queries.map { |query| search_images(query).pluck(:id) }.flatten.uniq
+      @image_ids ||= (
+        image_ids_by_image_info +
+        image_ids_by_character_images +
+        image_ids_by_animations
+      ).uniq
     end
 
-    def search_images(query)
-      Rails.cache.fetch("search_animations_#{query}", expired_in: 60.minutes) do
+    def image_ids_by_image_info
+      @image_ids_by_image_info ||= @queries.map { |query| search_images_by_image_info(query).pluck(:id) }.flatten
+    end
+
+    def search_images_by_image_info(query)
+      Rails.cache.fetch("search_images_#{query}", expired_in: 60.minutes) do
         Image.where("line LIKE ?", "%#{query}%").or(Image.where("description LIKE ?", "%#{query}%"))
       end
     end
 
-    def animation_ids
-      @animation_ids ||= @queries.map { |query| search_animations(query).pluck(:id) }.flatten.uniq
+    def image_ids_by_animations
+      @image_ids_by_animations ||= @queries.map { |query| search_images_by_animations(query).pluck(:id) }.flatten
     end
 
-    def search_animations(query)
+    def search_images_by_animations(query)
       Rails.cache.fetch("search_animations_#{query}", expired_in: 60.minutes) do
-        Animation.where("name LIKE ?", "%#{query}%")
+        animations = Animation.where("name LIKE ?", "%#{query}%")
+        Image.where(animation_id: animations.map(&:id))
+      end
+    end
+
+    def image_ids_by_character_images
+      @image_ids_by_character_images ||= search_character_images.pluck(:image_id).flatten
+    end
+
+    def search_character_images
+      Rails.cache.fetch("search_image_characters_#{@queries}", expired_in: 60.minutes) do
+        CharacterImage.where(character_id: character_ids)
       end
     end
 
