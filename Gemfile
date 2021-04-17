@@ -51,7 +51,6 @@ gem 'twitter'
 gem 'sidekiq'
 gem 'redis-namespace'
 gem 'sidekiq-scheduler'
-gem 'unicorn'
 gem 'slack-api'
 gem 'puma_worker_killer'
 
