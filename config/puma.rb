@@ -21,7 +21,17 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+workers ENV.fetch("WEB_CONCURRENCY") { 1 }
+
+before_fork do
+  PumaWorkerKiller.config do |config|
+    config.ram           = 512 # mb
+    config.frequency     = 5    # seconds
+    config.percent_usage = 0.98
+    config.rolling_restart_frequency = 16 * 3600 # 6 hours in seconds, or 12.hours if using Rails
+  end
+  PumaWorkerKiller.start
+end
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code

@@ -1,7 +1,7 @@
 :daemon: false
-:concurrency: 8
+:concurrency: 3
 production:
-  :concurrency: 10
+  :concurrency: 3
 :queues:
   - create_tweet
   - regular_tweet
