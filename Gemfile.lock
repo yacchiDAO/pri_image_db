@@ -257,6 +257,8 @@ GEM
     raabro (1.4.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-user_agent (0.5.2)
@@ -438,6 +440,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma
+  rack-cors
   rack-user_agent
   rails (~> 5.2.5)
   ransack
