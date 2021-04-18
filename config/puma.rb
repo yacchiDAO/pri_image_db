@@ -21,7 +21,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers ENV.fetch("WEB_CONCURRENCY") { 1 }
+workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
 before_fork do
   PumaWorkerKiller.config do |config|
