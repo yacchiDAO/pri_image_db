@@ -20,7 +20,7 @@ html
       meta name='twitter:card' content='photo'
     - else
       meta name='twitter:card' content='summary'
-    script data-ad-client="ca-pub-6781807233077381" { async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
+    /script data-ad-client="ca-pub-6781807233077381" { async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
 
   body
     - unless @smartphone
@@ -70,6 +70,8 @@ html
                 = content_tag(:div, value, class: "#{key}")
           == yield
         .ui.divider
+        script { async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
+        ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6781807233077381" data-ad-slot="1117401048" data-ad-format="auto" data-full-width-responsive="true"
         h4.ui.right.floated.header
           | お問い合わせ：
           = link_to Settings.twitter.id, Settings.twitter.url, target: '_blank'
