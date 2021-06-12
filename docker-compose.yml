@@ -11,7 +11,12 @@ services:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/pri_image_talk
+      - .:/pri_image_talk:delegated
+      - bundle:/usr/local/bundle:cached
+      - /pri_image_talk/vendor
+      - /pri_image_talk/tmp
+      - /pri_image_talk/log
+      - /pri_image_talk/.git
     ports:
       - "3000:3000"
     depends_on:
@@ -31,3 +36,6 @@ services:
       - redis
     environment:
       - ENABLE_BOOTSNAP=false
+volumes:
+  bundle:
+    driver: local
