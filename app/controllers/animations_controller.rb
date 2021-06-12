@@ -2,7 +2,7 @@ class AnimationsController < ApplicationController
   before_action :set_animation, only: [:show, :episode]
 
   def index
-    @animations  = Animation.order(:id)
+    @animations = Animation.order(:id)
   end
 
   def show

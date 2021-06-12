@@ -3,7 +3,7 @@ class Admin::AnimationsController < Admin::ApplicationController
 
   def index
     @q = Animation.ransack(params[:q])
-    @q.sorts = 'id' if @q.sorts.empty?
+    @q.sorts = "id" if @q.sorts.empty?
     @animations = @q.result(distinct: true).page(params[:page])
   end
 
@@ -14,10 +14,10 @@ class Admin::AnimationsController < Admin::ApplicationController
   def create
     @animation = Animation.new(animation_params)
     if @animation.save
-      flash[:notice] = '新規作成しました'
+      flash[:notice] = "新規作成しました"
       redirect_to edit_admin_animation_path(@animation)
     else
-      flash[:notice] = '新規作成に失敗しました'
+      flash[:notice] = "新規作成に失敗しました"
       render :new
     end
   end
@@ -27,31 +27,32 @@ class Admin::AnimationsController < Admin::ApplicationController
 
   def update
     if @animation.update!(animation_params)
-      flash[:notice] = '新規作成しました'
+      flash[:notice] = "新規作成しました"
       redirect_to edit_admin_animation_path(@animation)
     else
-      flash[:notice] = '新規作成に失敗しました'
+      flash[:notice] = "新規作成に失敗しました"
       render :new
     end
   end
 
   def destroy
     if @animation.destroy
-      flash[:notice] = '削除しました'
+      flash[:notice] = "削除しました"
       redirect_to admin_animations_path
     else
-      flash[:notice] = '削除に失敗しました'
+      flash[:notice] = "削除に失敗しました"
       redirect_to edit_admin_animations_path(@animation)
     end
   end
 
   private
 
-  def set_animation
-    @animation = Animation.find(params[:id])
-  end
+    def set_animation
+      @animation = Animation.find(params[:id])
+    end
 
-  def animation_params
-    params.require(:animation).permit(:name, :description, :image, :image_cache, :remove_image, :series_name, :episode_num)
-  end
+    def animation_params
+      params.require(:animation).permit(:name, :description, :image, :image_cache, :remove_image, :series_name,
+                                        :episode_num)
+    end
 end

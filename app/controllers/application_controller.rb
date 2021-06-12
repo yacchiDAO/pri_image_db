@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout 'base'
+  layout "base"
   before_action :check_smartphone
   protect_from_forgery
 

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: characters
+#
+#  id          :bigint           not null, primary key
+#  description :string
+#  image       :string
+#  name        :string           not null
+#
+# Indexes
+#
+#  index_characters_on_image  (image)
+#
 class Character < ApplicationRecord
   has_many :character_images
   has_many :character_animations

@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   def size_range
@@ -20,6 +20,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    original_filename if original_filename
+    original_filename
   end
 end

@@ -3,21 +3,21 @@ class Admin::ImagesController < Admin::ApplicationController
 
   def index
     @q = Image.ransack(params[:q])
-    @q.sorts = 'id desc' if @q.sorts.empty?
+    @q.sorts = "id desc" if @q.sorts.empty?
     @images = @q.result(distinct: true).page(params[:page])
   end
 
   def new
     @image = Image.new
   end
-  
+
   def create
     @image = Image.new(image_params)
     if @image.save
-      flash[:notice] = '新規作成しました'
+      flash[:notice] = "新規作成しました"
       redirect_to edit_admin_image_path(@image)
     else
-      flash[:notice] = '新規作成に失敗しました'
+      flash[:notice] = "新規作成に失敗しました"
       render :new
     end
   end
@@ -30,35 +30,36 @@ class Admin::ImagesController < Admin::ApplicationController
 
   def update
     if @image.update!(update_image_params)
-      flash[:notice] = '新規作成しました'
+      flash[:notice] = "新規作成しました"
       redirect_to edit_admin_image_path(@image)
     else
-      flash[:notice] = '新規作成に失敗しました'
+      flash[:notice] = "新規作成に失敗しました"
       render :new
     end
   end
 
   def destroy
     if @image.destroy
-      flash[:notice] = '削除しました'
+      flash[:notice] = "削除しました"
       redirect_to admin_images_path
     else
-      flash[:notice] = '削除に失敗しました'
+      flash[:notice] = "削除に失敗しました"
       redirect_to edit_admin_images_path(@image)
     end
   end
 
   private
 
-  def set_image
-    @image = Image.find(params[:id])
-  end
+    def set_image
+      @image = Image.find(params[:id])
+    end
 
-  def image_params
-    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description)
-  end
+    def image_params
+      params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description)
+    end
 
-  def update_image_params
-    params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, :episode, character_ids: [])
-  end
+    def update_image_params
+      params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, :episode,
+                                    character_ids: [])
+    end
 end
