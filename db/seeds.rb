@@ -153,6 +153,10 @@ pc_character_list =
    "明日香ルゥ",
    "青葉ユヅル",
    "桃山ひかり"]
+pc_character_list.each do |c|
+  character = Character.create(name: c)
+  CharacterAnimation.create(character_id: character.id, animation_id: 6)
+end
 
 # キングオブプリズム
 kp_character_list =

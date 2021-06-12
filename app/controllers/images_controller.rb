@@ -77,9 +77,12 @@ class ImagesController < ApplicationController
       @q = Image.includes(:animation, :character_images, :characters)
 
       # fackin relation and search
-      if params[:q].present? && @character_ids = params[:q][:character_images_character_id_eq_any] && (@character_ids.size >= 2)
-        images = @q.character_ids_and_search(@character_ids)
-        @q = Image.where(id: images.map(&:id))
+      if params[:q].present?
+        @character_ids = params[:q][:character_images_character_id_eq_any]
+        if @character_ids && (@character_ids.size >= 2)
+          images = @q.character_ids_and_search(@character_ids)
+          @q = Image.where(id: images.map(&:id))
+        end
       end
 
       @q = @q.ransack(params[:q])
@@ -97,7 +100,7 @@ class ImagesController < ApplicationController
     end
 
     def update_image_params
-      params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id, :line, :description, :episode,
-                                    character_ids: [])
+      params.require(:image).permit(:image, :image_cache, :remove_image, :animation_id,
+                                    :line, :description, :episode, character_ids: [])
     end
 end

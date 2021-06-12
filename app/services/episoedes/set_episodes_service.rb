@@ -11,7 +11,7 @@ module Episodes
       res = https.start { https.get(uri.request_uri) }
       if res.code == "200"
         result = JSON.parse(res.body)
-        set_all_episodes(result["results"])
+        update_all_episodes(result["results"])
       else
         puts "API ERROR #{res.code} #{res.message}"
       end
@@ -21,7 +21,7 @@ module Episodes
 
       def set_base_episodes
         Animation.all.each do |animation|
-          pp animation
+          # pp animation
           (1..animation.episode_num).to_a.each do |i|
             Episode.find_or_create(series: animation.series_name, episode_num: i, animation_id: animation.id)
           end
@@ -32,7 +32,7 @@ module Episodes
       #  "サブタイトル"=>"ゆめかわアイドル始めちゃいました！？", "ストーリーボード"=>"Nam Sung Min、An Jai Ho",
       #  "作画監修"=>"斉藤里枝、川島尚", "放送日(TXN)"=>"2017年4月4日", "演出"=>"佐藤まさふみ",
       #  "脚本"=>"加藤還一", "話数"=>1, "_key"=>"ipp_1"}
-      def set_all_episodes(episodes)
+      def update_all_episodes(episodes)
         episodes.each do |e|
           episode = Episode.where(series: e["episodeOfSeries"]).find_by(episode_num: e["話数"])
           next if episode.nil?
