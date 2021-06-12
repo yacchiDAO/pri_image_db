@@ -14,6 +14,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
+    # NOTE: テストのときはここに0入る
+    return -1..1 if Rails.env.test?
+
     1..10.megabytes
   end
 

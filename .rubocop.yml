@@ -39,6 +39,11 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnusedMethodArgument:
   Enabled: false
 
+# factoryとか空のブロック入りがち
+Lint/EmptyBlock:
+  Exclude:
+    - spec/**/*
+
 #################### Metrics ###############################
 
 Metrics/AbcSize:
