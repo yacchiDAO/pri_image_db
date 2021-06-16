@@ -6,6 +6,6 @@ class RegularTweetWorker
     return unless Rails.env.production?
 
     image = Image.find_by(id: Image.pluck(:id).sample)
-    Twitter::TweetService.new(image, image.line.blank? ? "セリフ無し" : image.line).execute
+    Twitter::TweetService.new.execute(image, image.line.blank? ? "セリフ無し" : image.line)
   end
 end

@@ -6,6 +6,9 @@ production:
   - create_tweet
   - regular_tweet
   - slack_notification
+  - fetch_mention
 :schedule:
   RegularTweetWorker:
     cron: '0 */30 * * * *' # execute at every 30 minutes
+  FetchMentionWorker:
+    cron: '*/10 * * * * *' # execute at every 10 seconds
