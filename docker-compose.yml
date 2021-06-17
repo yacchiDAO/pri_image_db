@@ -21,6 +21,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
     environment:
       TZ: Japan
       LANG: C.UTF-8
@@ -32,6 +33,10 @@ services:
     stdin_open: false
   redis:
     image: redis
+    ports:
+       - 6379:6379
+    volumes:
+       - ./redis:/data
   worker:
     build: .
     command: bundle exec sidekiq
