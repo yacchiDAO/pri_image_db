@@ -1,4 +1,4 @@
-FROM ruby:2.7.0
+FROM ruby:3.1.0
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /pri_image_talk
 WORKDIR /pri_image_talk

@@ -18,6 +18,7 @@ module PriImageTalk
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
+    config.active_record.cache_versioning = false
 
     # rails gでrspec関連のファイルを自動生成しない
     config.generators do |g|
