@@ -14,9 +14,9 @@ services:
       - .:/pri_image_talk:delegated
       - bundle:/usr/local/bundle:cached
       - /pri_image_talk/vendor
-      - /pri_image_talk/tmp
-      - /pri_image_talk/log
-      - /pri_image_talk/.git
+      # - /pri_image_talk/tmp
+      # - /pri_image_talk/log
+      # - /pri_image_talk/.git
     ports:
       - "3000:3000"
     depends_on:
@@ -27,7 +27,7 @@ services:
       LANG: C.UTF-8
   spring:
     <<: *app_base
-    command: ["bundle", "exec", "spring", "server"]
+    command: bundle exec spring server
     ports: []
     tty: false
     stdin_open: false

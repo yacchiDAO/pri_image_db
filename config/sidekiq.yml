@@ -10,5 +10,5 @@ production:
 :schedule:
   RegularTweetWorker:
     cron: '0 */30 * * * *' # execute at every 30 minutes
-  FetchMentionWorker:
-    cron: '*/10 * * * * *' # execute at every 10 seconds
+  # FetchMentionWorker:
+  #   cron: '*/10 * * * * *' # execute at every 10 seconds
