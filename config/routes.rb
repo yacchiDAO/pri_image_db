@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  require "sidekiq/web"
-  mount Sidekiq::Web => "/sidekiq"
-
   root to: "images#index", as: :root
   get "what", to: "home#index"
   resources :images, only: [:index, :show, :new, :create, :edit, :update] do
@@ -32,6 +28,11 @@ Rails.application.routes.draw do
     resources :images
     resources :animations, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :characters, only: [:index, :new, :edit, :create, :update, :destroy]
+
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    require "sidekiq/web"
+    require 'sidekiq-scheduler/web'
+    mount Sidekiq::Web => "/sidekiq"
   end
   get "*anything" => "errors#routing_error"
 end
