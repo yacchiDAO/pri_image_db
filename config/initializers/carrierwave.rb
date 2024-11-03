@@ -10,6 +10,8 @@ CarrierWave.configure do |config|
     config.fog_public = false
     config.fog_credentials = {
       provider: "AWS",
+      service: "S3",
+      endpoint: "https://s3.ap-northeast-1.wasabisys.com",
       aws_access_key_id: Settings.aws.access_key_id,
       aws_secret_access_key: Settings.aws.secret_access_key,
       region: Settings.aws.region,
