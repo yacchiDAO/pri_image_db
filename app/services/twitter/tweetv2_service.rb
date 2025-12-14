@@ -24,13 +24,24 @@ module Twitter
     end
 
     def execute(image, message)
-      # media_idの取得は大本のTwitter gemのuploadがchunk uploadに対応してるのでそっちを使用する
-      media = Rails.env.production? ? URI.parse(image.image.url).open : File.new(image.image.current_path)
-      media_id = upload(media)[:media_id_string]
-      text = "#{message}\n#{image.animation.name}より\n\n#{::Settings.url}images/#{image.id}\n#PriImage"
+      begin
+        # media_idの取得は大本のTwitter gemのuploadがchunk uploadに対応してるのでそっちを使用する
+        media = Rails.env.production? ? URI.parse(image.image.url).open : File.new(image.image.current_path)
+        media_id = upload(media)[:media_id_string]
+        text = "#{message}\n#{image.animation.name}より\n\n#{::Settings.url}images/#{image.id}\n#PriImage"
 
-      # ツイートそのものはsimple twitterのほうが楽なので
-      simple_twitter.post("https://api.twitter.com/2/tweets", json: { text: text, media: { media_ids: [media_id] } })
+        # ツイートそのものはsimple twitterのほうが楽なので
+        simple_twitter.post("https://api.twitter.com/2/tweets", json: { text: text, media: { media_ids: [media_id] } })
+      rescue OpenURI::HTTPError, SocketError => e
+        Rails.logger.error "【Tweetv2Service】Media download error for image_id: #{image.id}, url: #{image.image.url}. Error: #{e.message}"
+        raise
+      rescue Twitter::Error => e
+        Rails.logger.error "【Tweetv2Service】Media upload error for image_id: #{image.id}. Error: #{e.message}"
+        raise
+      rescue => e
+        Rails.logger.error "【Tweetv2Service】Tweet post or unexpected error for image_id: #{image.id}. Error: #{e.class}: #{e.message}"
+        raise
+      end
     end
 
     # NOTE: 以下のメソッドは https://github.com/sferik/twitter/blob/master/lib/twitter/rest/upload_utils.rb のパクリ
