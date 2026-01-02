@@ -1,5 +1,6 @@
 class CreateTweetWorker
   include Sidekiq::Worker
+
   sidekiq_options queue: :create_tweet, retry: false
 
   def perform(image_id)

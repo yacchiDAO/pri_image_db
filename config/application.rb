@@ -9,7 +9,10 @@ Bundler.require(*Rails.groups)
 module PriImageTalk
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 7.1
+
+    # To keep using the current cache store, you can turn off cache versioning entirely:
+    config.active_record.cache_versioning = false
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

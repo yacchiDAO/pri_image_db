@@ -13,6 +13,7 @@ services:
     volumes:
       - .:/pri_image_talk:delegated
       - bundle:/usr/local/bundle:cached
+      - .:/pri_image_talk/.bundle
       - /pri_image_talk/vendor
       # - /pri_image_talk/tmp
       # - /pri_image_talk/log
@@ -42,6 +43,8 @@ services:
     command: bundle exec sidekiq
     volumes:
       - .:/pri_image_talk
+      - bundle:/usr/local/bundle:cached
+      - .:/pri_image_talk/.bundle
     links:
       - db
       - redis

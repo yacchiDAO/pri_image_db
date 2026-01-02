@@ -22,4 +22,22 @@ class Character < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[
+      description
+      id
+      image
+      name
+    ]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[
+      character_animations
+      character_images
+      animations
+      images
+    ]
+  end
 end

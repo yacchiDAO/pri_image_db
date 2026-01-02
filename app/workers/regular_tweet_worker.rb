@@ -1,5 +1,6 @@
 class RegularTweetWorker
   include Sidekiq::Worker
+
   sidekiq_options queue: :regular_tweet
 
   def perform

@@ -3,10 +3,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.4"
+ruby "3.2.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.2.5"
+gem "rails", "~> 7.1.2"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"
 # Use Puma as the app server
@@ -43,13 +43,14 @@ gem "config"
 gem "fog-aws"
 gem "jquery-rails"
 gem "kaminari"
+gem "listen", ">= 3.5"
 gem "puma_worker_killer"
 gem "rack-cors"
 gem "rack-user_agent"
 gem "ransack"
 gem "redis-namespace"
 gem "ridgepole"
-gem "semantic-ui-sass", git: "https://github.com/doabit/semantic-ui-sass.git"
+gem "semantic-ui-sass"
 gem "sidekiq"
 gem "sidekiq-scheduler"
 gem "simple_twitter"
@@ -65,11 +66,12 @@ group :development, :test do
   gem "bullet"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "derailed" # メモリ消費gem監視
+  gem "factory_bot_rails"
+  gem "rspec-rails"
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
@@ -88,9 +90,4 @@ group :test do
   gem "selenium-webdriver"
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
-end
-
-group :development, :test do
-  gem "factory_bot_rails"
-  gem "rspec-rails"
 end

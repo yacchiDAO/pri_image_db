@@ -17,7 +17,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     # NOTE: テストのときはここに0入る
     return -1..1 if Rails.env.test?
 
-    1..10.megabytes
+    1..(10.megabytes)
   end
 
   def filename
