@@ -1,5 +1,6 @@
 class SlackNotificationWorker
   include Sidekiq::Worker
+
   sidekiq_options queue: :slack_notification, retry: false
 
   def perform(image_id)

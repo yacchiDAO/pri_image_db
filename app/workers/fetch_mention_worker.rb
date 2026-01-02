@@ -1,5 +1,6 @@
 class FetchMentionWorker
   include Sidekiq::Worker
+
   sidekiq_options queue: :fetch_mention, retry: false
 
   def perform

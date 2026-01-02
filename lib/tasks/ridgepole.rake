@@ -27,19 +27,19 @@ namespace :ridgepole do
     end
 
     def config_file_heroku
-      uri = URI.parse(ENV["DATABASE_URL"])
+      uri = URI.parse(ENV.fetch("DATABASE_URL", nil))
 
       raise "Invalid uri: #{uri}" if [uri.scheme, uri.user, uri.password, uri.host, uri.path].any?(&:nil?)
 
       uri.scheme = "postgresql" if uri.scheme == "postgres"
 
-      "\'{
+      "'{
       adapter:  #{uri.scheme},
       username: #{uri.user},
       password: #{uri.password},
       host:     #{uri.host},
       database: #{uri.path.sub(%r{\A/}, "")},
-    }\'"
+    }'"
     end
 
     def ridgepole(*options)

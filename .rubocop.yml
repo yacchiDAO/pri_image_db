@@ -47,7 +47,7 @@ Lint/EmptyBlock:
 #################### Metrics ###############################
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 40
 
 # Gemfile, Guardfile は DSL 的で基本的に複雑にはならないので除外
 # rake, rspec, environments, routes は巨大な block 不可避なので除外
@@ -72,6 +72,9 @@ Metrics/MethodLength:
   Exclude:
     - "db/migrate/*.rb"
 
+Layout/LineLength:
+  Max: 150
+
 #################### Naming ################################
 
 # ブロック内で短い変数使いたい
@@ -79,7 +82,7 @@ Naming/MethodParameterName:
   Enabled: false
 
 # has_ から始まるメソッドは許可する
-Naming/PredicateName:
+Naming/PredicatePrefix:
   ForbiddenPrefixes:
     - "is_"
     - "have_"
